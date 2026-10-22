@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nalss Baked It | Layers of love, Potchefstroom</title>
+<meta name="description" content="Cakes, cupcakes, cinnamon rolls and mini cakes baked with love in Potchefstroom.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pink: #F8CFDB;        /* baby pink */
+    --pink-deep: #F1B0C4;   /* slightly deeper pink for buttons and accents */
+    --white: #FFFFFF;
+    --beige: #F4EADD;       /* beige */
+    --beige-deep: #E6D6C2;
+    --ink: #4B3A3F;         /* warm dark text */
+    --muted: #7A666B;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: 'Quicksand', system-ui, sans-serif;
+    color: var(--ink);
+    background: var(--white);
+    line-height: 1.65;
+  }
+  h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; line-height: 1.12; margin: 0; }
+  a { color: inherit; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+  section { padding: 88px 0; }
+
+  .eyebrow { font-size: 13px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+  .section-head { display: flex; flex-direction: column; gap: 10px; margin-bottom: 40px; }
+  .section-head h2 { font-size: clamp(32px, 4.4vw, 48px); }
+  .section-head p { margin: 0; color: var(--muted); max-width: 560px; }
+
+  /* Header */
+  header { background: var(--white); border-bottom: 1px solid var(--beige-deep); position: sticky; top: 0; z-index: 10; }
+  .nav { max-width: 1120px; margin: 0 auto; padding: 12px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 24px; }
+  .logo { display: inline-flex; align-items: center; gap: 12px; font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; text-decoration: none; }
+  .logo img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; }
+  .nav ul { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 22px; list-style: none; margin: 0; padding: 0; }
+  .nav ul a { display: inline-block; padding: 10px 0; text-decoration: none; font-weight: 600; font-size: 15px; }
+  .nav ul a:hover { text-decoration: underline; text-decoration-color: var(--pink-deep); text-decoration-thickness: 3px; text-underline-offset: 6px; }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-height: 48px; padding: 0 28px; border-radius: 999px;
+    background: var(--pink-deep); color: var(--ink); font-weight: 700; text-decoration: none;
+    border: 2px solid var(--pink-deep);
+  }
+  .btn:hover { background: var(--pink); border-color: var(--pink); }
+  .btn.alt { background: transparent; border-color: var(--ink); }
+  .btn.alt:hover { background: var(--white); }
+
+  /* Hero */
+  .hero { background: var(--pink); }
+  .hero .wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 48px; padding-top: 72px; padding-bottom: 80px; }
+  .hero-text { flex: 1 1 400px; display: flex; flex-direction: column; gap: 22px; }
+  .hero h1 { font-size: clamp(44px, 6.4vw, 84px); }
+  .hero .tagline { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(22px, 2.6vw, 30px); margin: 0; }
+  .hero p { margin: 0; font-size: 18px; max-width: 480px; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .hero-art {
+    flex: 1 1 320px; max-width: 440px; aspect-ratio: 1 / 1; border-radius: 50%;
+    background: var(--white); border: 10px solid var(--beige);
+    object-fit: cover; display: block;
+  }
+  .strip { background: var(--beige); text-align: center; padding: 16px 24px; font-weight: 600; letter-spacing: 0.04em; }
+
+  /* Menu */
+  .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px; align-items: start; }
+  .menu-card { background: var(--white); border: 2px solid var(--beige); border-radius: 22px; padding: 30px; display: flex; flex-direction: column; gap: 16px; }
+  .menu-card.tint { background: var(--beige); border-color: var(--beige); }
+  .menu-card.pink { background: var(--pink); border-color: var(--pink); }
+  .menu-card h3 { font-size: 28px; }
+  .menu-card h4 { margin: 6px 0 0; font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+  .menu-card.pink h4 { color: var(--ink); }
+  .items { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+  .items li { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; border-bottom: 1px dashed var(--beige-deep); padding-bottom: 8px; }
+  .menu-card.tint .items li { border-bottom-color: #D9C6AE; }
+  .menu-card.pink .items li { border-bottom-color: #E9A9BE; }
+  .items .price { font-weight: 700; white-space: nowrap; }
+  .note { margin: 0; font-size: 14px; color: var(--muted); }
+  .menu-card.pink .note { color: var(--ink); }
+  .rules { background: rgba(255,255,255,0.7); border-radius: 14px; padding: 16px 18px; }
+  .rules strong { display: block; font-size: 14px; margin-bottom: 6px; }
+  .rules ul { margin: 0; padding-left: 20px; font-size: 14px; display: flex; flex-direction: column; gap: 4px; }
+
+  /* Catalogue */
+  .filters { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 36px; }
+  .filter {
+    min-height: 44px; padding: 0 22px; border-radius: 999px; cursor: pointer;
+    font: inherit; font-weight: 600; font-size: 15px;
+    background: var(--white); color: var(--ink); border: 2px solid var(--beige-deep);
+  }
+  .filter:hover { border-color: var(--pink-deep); }
+  .filter[aria-pressed="true"] { background: var(--pink-deep); border-color: var(--pink-deep); }
+  .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 24px; }
+  .tile { margin: 0; display: flex; flex-direction: column; gap: 12px; }
+  .tile[hidden] { display: none; }
+  .tile .ph, .tile img {
+    width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 20px; display: flex;
+    align-items: flex-end; padding: 16px; font-size: 13px; color: var(--ink);
+  }
+  .tile img { padding: 0; display: block; }
+  .tile:nth-child(3n+1) .ph { background: var(--pink); }
+  .tile:nth-child(3n+2) .ph { background: var(--beige); }
+  .tile:nth-child(3n+3) .ph { background: var(--pink-deep); }
+  .tile figcaption { display: flex; flex-direction: column; gap: 2px; }
+  .tile figcaption strong { font-family: 'Playfair Display', serif; font-size: 19px; }
+  .tile figcaption span { font-size: 14px; color: var(--muted); }
+  .catalogue-cta { margin-top: 40px; display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
+  .catalogue-cta p { margin: 0; color: var(--muted); }
+
+  /* About */
+  .about { background: var(--beige); }
+  .about .wrap { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 56px; }
+  .about-head { flex: 1 1 320px; display: flex; flex-direction: column; gap: 18px; align-self: flex-start; }
+  .about-head h2 { font-size: clamp(34px, 4.6vw, 54px); }
+  .about-head .tagline { font-family: 'Playfair Display', serif; font-style: italic; font-size: 24px; margin: 0; }
+  .about-badge { display: inline-block; align-self: flex-start; background: var(--pink); border-radius: 999px; padding: 8px 18px; font-weight: 700; font-size: 14px; }
+  .owner { margin: 8px 0 0; display: flex; flex-direction: column; gap: 10px; max-width: 380px; }
+  .owner img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center top; border-radius: 24px; border: 8px solid var(--white); display: block; }
+  .owner figcaption { font-size: 14px; font-weight: 600; color: var(--muted); }
+  .about-body { flex: 1 1 440px; display: flex; flex-direction: column; gap: 20px; font-size: 17px; }
+  .about-body p { margin: 0; }
+  .quote { font-family: 'Playfair Display', serif; font-style: italic; font-size: 24px; background: var(--white); border-radius: 18px; padding: 24px 28px; }
+
+  /* Policy */
+  .policy-box { background: var(--white); border: 2px solid var(--pink); border-radius: 22px; padding: 32px; max-width: 820px; }
+  .policy-box ol { margin: 0; padding-left: 24px; display: flex; flex-direction: column; gap: 12px; }
+
+  /* Order */
+  .order { background: var(--pink); text-align: center; }
+  .order .wrap { display: flex; flex-direction: column; align-items: center; gap: 22px; }
+  .order h2 { font-size: clamp(32px, 4.4vw, 48px); }
+  .order p { margin: 0; max-width: 560px; }
+  .order .hero-actions { justify-content: center; }
+
+  footer { background: var(--ink); color: #F6E8EC; padding: 36px 0; font-size: 14px; }
+  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px 32px; }
+  footer a { color: #F6E8EC; display: block; padding: 4px 0; }
+  .foot-copy { width: 100%; padding-top: 16px; border-top: 1px solid #6A5258; color: #D9C5CF; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a class="logo" href="#top"><img src="photos/logo.jpg" alt="" width="44" height="44">Nalss Baked It</a>
+    <ul>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#catalogue">Catalogue</a></li>
+      <li><a href="#addons">Add-ons</a></li>
+      <li><a href="#about">Our story</a></li>
+      <li><a href="#policy">Policy</a></li>
+      <li><a class="btn" href="#order">Order</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="wrap">
+      <div class="hero-text">
+        <div class="eyebrow">Potchefstroom &middot; Est. 2025</div>
+        <h1>Nalss Baked It</h1>
+        <p class="tagline">Layers of love</p>
+        <p>Birthday cakes, cupcake boxes, cinnamon rolls and mini cakes, baked one layer at a time with care in every swirl.</p>
+        <div class="hero-actions">
+          <a class="btn" href="#menu">See the menu</a>
+          <a class="btn alt" href="#order">How to order</a>
+        </div>
+      </div>
+      <img class="hero-art" src="photos/logo.jpg" alt="Nalss Baked It logo: a cupcake topped with a heart, est. 2025">
+    </div>
+  </div>
+  <div class="strip">Cakes &nbsp;&middot;&nbsp; Cupcakes &nbsp;&middot;&nbsp; Cinnamon rolls &nbsp;&middot;&nbsp; Mini cakes</div>
+
+  <!-- Menu -->
+  <section id="menu">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Menu</div>
+        <h2>Something sweet for every occasion</h2>
+        <p>All prices are in rands (R).</p>
+      </div>
+
+      <div class="menu-grid">
+
+        <div class="menu-card">
+          <h3>Cakes</h3>
+          <ul class="items">
+            <li><span>Lunch box bento (12 cm)</span><span class="price">R150</span></li>
+            <li><span>Small bento (18 cm)</span><span class="price">R450</span></li>
+            <li><span>Large cake (23 cm)</span><span class="price">R650</span></li>
+          </ul>
+          <p class="note">An additional fee applies to chocolate cakes.</p>
+        </div>
+
+        <div class="menu-card tint">
+          <h3>Cupcakes</h3>
+          <ul class="items">
+            <li><span>6 cupcakes</span><span class="price">R210</span></li>
+            <li><span>12 cupcakes</span><span class="price">R320</span></li>
+            <li><span>24 cupcakes</span><span class="price">R600</span></li>
+          </ul>
+        </div>
+
+        <div class="menu-card pink">
+          <h3>Gourmet cupcakes</h3>
+          <ul class="items">
+            <li><span>6 cupcakes</span><span class="price">R210</span></li>
+            <li><span>12 cupcakes</span><span class="price">R400</span></li>
+            <li><span>24 cupcakes</span><span class="price">R700</span></li>
+          </ul>
+        </div>
+
+        <div class="menu-card">
+          <h3>Combos</h3>
+          <ul class="items">
+            <li><span>12 cm cake + 5 cupcakes</span><span class="price">R450</span></li>
+            <li><span>12 cm cake + 8 cupcakes</span><span class="price">R500</span></li>
+          </ul>
+        </div>
+
+        <div class="menu-card tint">
+          <h3>Cinnamon rolls</h3>
+          <h4>Classic</h4>
+          <ul class="items">
+            <li><span>4 rolls</span><span class="price">R120</span></li>
+            <li><span>2 rolls</span><span class="price">R60</span></li>
+            <li><span>1 roll</span><span class="price">R30</span></li>
+          </ul>
+          <h4>Assorted</h4>
+          <p class="note">Classic, Oreo, caramel or pecan</p>
+          <ul class="items">
+            <li><span>4 rolls</span><span class="price">R150</span></li>
+            <li><span>2 rolls</span><span class="price">R75</span></li>
+            <li><span>1 roll</span><span class="price">R40</span></li>
+          </ul>
+          <div class="rules">
+            <strong>Cinnamon rolls only</strong>
+            <ul>
+              <li>Orders taken Mon-Sat 18:00 for Sunday collection.</li>
+              <li>Order from Mon-Thursday for Friday collection.</li>
+              <li>Full payment confirms order.</li>
+              <li>Delivery free for 4+ orders.</li>
+              <li>R10 delivery around Bult area.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="menu-card pink">
+          <h3>Mini cakes</h3>
+          <h4>Flavours &middot; R60 each</h4>
+          <ul class="items">
+            <li><span>Chocolate Oreo</span><span class="price">R60</span></li>
+            <li><span>Chocolate KitKat</span><span class="price">R60</span></li>
+            <li><span>Red Velvet and cream cheese</span><span class="price">R60</span></li>
+            <li><span>Caramel Lotus biscuit</span><span class="price">R60</span></li>
+          </ul>
+          <div class="rules">
+            <strong>Mini cakes only</strong>
+            <ul>
+              <li>Orders taken Mon-Sat 18:00 for Sunday collection.</li>
+              <li>Order from Mon-Thursday for Friday collection.</li>
+              <li>Full payment confirms order.</li>
+              <li>Delivery free for 4+ orders.</li>
+              <li>R10 delivery around Bult area.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Add-ons -->
+  <section id="addons" style="padding-top: 0">
+    <div class="wrap">
+      <div class="menu-card tint" style="max-width: 640px">
+        <h3>Add-ons</h3>
+        <ul class="items">
+          <li><span>Edible image</span><span class="price">R150</span></li>
+          <li><span>Bows / pearls</span><span class="price">R30</span></li>
+          <li><span>Sprinkles</span><span class="price">R20</span></li>
+        </ul>
+        <p class="note"><strong>Disclaimer:</strong> Other add-ons are priced upon request.<br><strong>Note:</strong> There will be an additional fee for chocolate cakes.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Catalogue -->
+  <section id="catalogue" style="padding-top: 0">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Catalogue</div>
+        <h2>Cakes we have made</h2>
+        <p>A look at our bakes for inspiration. Every order is made fresh, and inspiration pictures are for reference only.</p>
+      </div>
+
+      <div class="filters" role="group" aria-label="Filter the catalogue">
+        <button class="filter" type="button" data-filter="all" aria-pressed="true">All</button>
+        <button class="filter" type="button" data-filter="cakes" aria-pressed="false">Cakes</button>
+        <button class="filter" type="button" data-filter="cupcakes" aria-pressed="false">Cupcakes</button>
+        <button class="filter" type="button" data-filter="gourmet" aria-pressed="false">Gourmet cupcakes</button>
+        <button class="filter" type="button" data-filter="combos" aria-pressed="false">Combos</button>
+        <button class="filter" type="button" data-filter="rolls" aria-pressed="false">Cinnamon rolls</button>
+        <button class="filter" type="button" data-filter="mini" aria-pressed="false">Mini cakes</button>
+      </div>
+
+      <!--
+        TO ADD A NEW PHOTO:
+        1. Put the image in the "photos" folder.
+        2. Copy a whole <figure class="tile"> ... </figure> block below and change the file name, text and alt.
+        3. Set data-cat to one of: cakes, cupcakes, gourmet, combos, rolls, mini
+      -->
+      <div class="gallery">
+        <figure class="tile" data-cat="cakes">
+          <img src="photos/cake-half-way-to-one.jpg" alt="Pink bento cake with a teddy bear, wooden ladder and gold lettering reading 1/2 way to 1" loading="lazy">
+          <figcaption><strong>Half way to one cake</strong><span>Bento cake</span></figcaption>
+        </figure>
+        <figure class="tile" data-cat="cakes">
+          <img src="photos/cake-heart-black-bows.jpg" alt="White heart-shaped cake with piped borders, black ribbon bows and a printed message" loading="lazy">
+          <figcaption><strong>Heart cake with black bows</strong><span>Custom cake</span></figcaption>
+        </figure>
+        <figure class="tile" data-cat="cakes">
+          <img src="photos/cake-character-birthday.jpg" alt="Pink and blue birthday cake with a character cake topper and a pink name topper" loading="lazy">
+          <figcaption><strong>Character birthday cake</strong><span>Custom cake</span></figcaption>
+        </figure>
+        <figure class="tile" data-cat="cakes">
+          <img src="photos/cake-mothers-day.jpg" alt="Pink bento cake with piped rosettes, gold pearls and a Happy Mother's Day heart plaque" loading="lazy">
+          <figcaption><strong>Mother's Day cake</strong><span>Bento cake</span></figcaption>
+        </figure>
+        <figure class="tile" data-cat="cakes">
+          <img src="photos/cake-congrats-grad.jpg" alt="White bento cake with black ribbon bows and a ConGrads edible image" loading="lazy">
+          <figcaption><strong>Congrats grad cake</strong><span>Bento cake</span></figcaption>
+        </figure>
+        <figure class="tile" data-cat="cupcakes">
+          <img src="photos/cupcakes-pink-lilac.jpg" alt="Box of cupcakes piped in pink and lilac with edible image toppers" loading="lazy">
+          <figcaption><strong>Pink and lilac cupcakes</strong><span>Custom cupcake box</span></figcaption>
+        </figure>
+        <figure class="tile" data-cat="cupcakes">
+          <img src="photos/cupcakes-graduation.jpg" alt="Box of graduation cupcakes with edible images and black fondant plaques" loading="lazy">
+          <figcaption><strong>Graduation cupcakes</strong><span>Custom cupcake box</span></figcaption>
+        </figure>
+        <figure class="tile" data-cat="gourmet">
+          <img src="photos/cupcakes-gourmet-box.jpg" alt="Box of six gourmet cupcakes topped with KitKat, Lotus biscuit, Oreo and blackberries" loading="lazy">
+          <figcaption><strong>Gourmet cupcake box</strong><span>KitKat, Lotus, Oreo and more</span></figcaption>
+        </figure>
+        <figure class="tile" data-cat="combos">
+          <img src="photos/combo-bento-cupcakes.jpg" alt="White bento cake with a Happy Birthday edible image and white cupcakes in a box" loading="lazy">
+          <figcaption><strong>Birthday bento and cupcakes</strong><span>Cake and cupcake combo</span></figcaption>
+        </figure>
+        <figure class="tile" data-cat="combos">
+          <img src="photos/combo-football-fan.jpg" alt="Red and white bento cake and cupcakes with football club edible images" loading="lazy">
+          <figcaption><strong>Football fan combo</strong><span>Cake and cupcake combo</span></figcaption>
+        </figure>
+        <figure class="tile" data-cat="rolls">
+          <img src="photos/rolls-oreo.jpg" alt="Two cinnamon rolls with cream glaze, chocolate drizzle and Oreo cookies" loading="lazy">
+          <figcaption><strong>Oreo cinnamon rolls</strong><span>Cinnamon rolls</span></figcaption>
+        </figure>
+        <figure class="tile" data-cat="rolls">
+          <img src="photos/rolls-kitkat-lotus.jpg" alt="Cinnamon rolls topped with KitKat and chocolate, and Lotus biscuit with caramel" loading="lazy">
+          <figcaption><strong>KitKat and Lotus rolls</strong><span>Cinnamon rolls</span></figcaption>
+        </figure>
+        <figure class="tile" data-cat="rolls">
+          <img src="photos/rolls-assorted.jpg" alt="Four cinnamon rolls on a plate: classic, Oreo, pecan and Lotus caramel" loading="lazy">
+          <figcaption><strong>Assorted cinnamon rolls</strong><span>Classic, Oreo, caramel, pecan</span></figcaption>
+        </figure>
+        <figure class="tile" data-cat="mini">
+          <img src="photos/mini-chocolate-oreo.jpg" alt="Chocolate Oreo mini cake in a foil tray, topped with whipped cream, Oreo crumbs and a whole Oreo" loading="lazy">
+          <figcaption><strong>Chocolate Oreo</strong><span>Mini cake</span></figcaption>
+        </figure>
+        <figure class="tile" data-cat="mini">
+          <img src="photos/mini-chocolate-kitkat.jpg" alt="Chocolate KitKat mini cake in a foil tray, topped with whipped cream, chocolate pieces and a KitKat finger" loading="lazy">
+          <figcaption><strong>Chocolate KitKat</strong><span>Mini cake</span></figcaption>
+        </figure>
+      </div>
+
+      <p class="note" style="margin-top: 28px">Final designs may vary from the photos. See the menu above for prices.</p>
+
+      <div class="catalogue-cta">
+        <a class="btn" href="https://wa.me/27672015427?text=Hi%20Nalss%20Baked%20It%21%20I%27d%20like%20to%20place%20an%20order." target="_blank" rel="noopener">Order your favourite on WhatsApp</a>
+        <p>Want something custom? Send us your inspiration pictures.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="about">
+    <div class="wrap">
+      <div class="about-head">
+        <div class="eyebrow">Our story</div>
+        <h2>Nalss Baked It</h2>
+        <p class="tagline">Love in every layer.</p>
+        <span class="about-badge">Potchefstroom &middot; Est. 2025</span>
+        <figure class="owner">
+          <img src="photos/owner.jpg" alt="The owner of Nalss Baked It, smiling with her arms crossed, in a white top and skirt" loading="lazy">
+          <figcaption>The baker behind Nalss Baked It</figcaption>
+        </figure>
+      </div>
+      <div class="about-body">
+        <p>It all started with one birthday cake. Just me, a bowl, and so much love packed into every layer for someone special. You took a bite, you smiled, you ordered again.</p>
+        <p>From birthday candles, to graduation cheers, to "just because" surprises, every celebration became a reason to bake. And then came the Sunday desserts. The cupcake boxes that turn quiet weekends into sweet moments.</p>
+        <div class="quote">"Layers of love" is our new tagline because that's exactly how I bake: one layer at a time, with care in every swirl and a little heart on top, just for you.</div>
+        <p><strong>Thank you. Ke a leboha</strong> to everyone who ordered that first birthday cake and stayed for every celebration after. You took Nalss Baked It from a 2025 kitchen dream to this new logo I'm proud to share.</p>
+        <p>Here's to more birthdays, milestones, Sunday treats, and many more layers of love.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Policy -->
+  <section id="policy">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Good to know</div>
+        <h2>Business policy</h2>
+      </div>
+      <div class="policy-box">
+        <ol>
+          <li>A 50% non-refundable deposit is required to confirm booking.</li>
+          <li>Full payment must be made before collection of your order.</li>
+          <li>All orders must be placed at least 3 days in advance.</li>
+          <li>Late orders will attract an additional charge.</li>
+          <li>We do not offer delivery. Customers are required to collect their orders or Bolt/Uber send at own risk.</li>
+          <li>Please note that inspiration pictures are for reference only. Final products may not look exactly the same due to design and decorating variations.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- Order -->
+  <section id="order" class="order">
+    <div class="wrap">
+      <div class="eyebrow">Ready to order?</div>
+      <h2>Let's bake something for you</h2>
+      <p>Message us with what you would like and your collection date. Remember to order at least 3 days in advance.</p>
+      <div class="hero-actions">
+        <a class="btn" href="https://wa.me/27672015427?text=Hi%20Nalss%20Baked%20It%21%20I%27d%20like%20to%20place%20an%20order." target="_blank" rel="noopener">Order on WhatsApp: 067 201 5427</a>
+        <a class="btn alt" href="https://www.instagram.com/nalss_baked_it?srtk=c3htcHNsMHNxa3E3" target="_blank" rel="noopener">Message on Instagram</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-brand"><strong>Nalss Baked It</strong><br>Layers of love &middot; Potchefstroom &middot; Est. 2025</div>
+    <div class="foot-links">
+      <a href="https://wa.me/27672015427?text=Hi%20Nalss%20Baked%20It%21%20I%27d%20like%20to%20place%20an%20order." target="_blank" rel="noopener">WhatsApp: 067 201 5427</a>
+      <a href="https://www.instagram.com/nalss_baked_it?srtk=c3htcHNsMHNxa3E3" target="_blank" rel="noopener">Instagram: @nalss_baked_it</a>
+    </div>
+    <div class="foot-copy">&copy; 2025 Nalss Baked It. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+  // Catalogue filter
+  (function () {
+    var buttons = document.querySelectorAll('.filter');
+    var tiles = document.querySelectorAll('.tile');
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var f = btn.getAttribute('data-filter');
+        buttons.forEach(function (b) { b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
+        tiles.forEach(function (t) {
+          t.hidden = !(f === 'all' || t.getAttribute('data-cat') === f);
+        });
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
